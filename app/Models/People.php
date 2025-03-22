@@ -13,4 +13,10 @@ class People extends Model
     protected $table = 'people';
 
     protected $fillable = ['name', 'email'];
+
+    // Relacionamento muitos para muitos com Task
+    public function tasks()
+    {
+        return $this->belongsToMany(Task::class, 'task_person', 'person_id', 'task_id')->withTimestamps();
+    }
 }

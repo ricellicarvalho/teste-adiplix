@@ -12,6 +12,9 @@ class PeopleSeeder extends Seeder
      */
     public function run(): void
     {
-        People::factory()->count(10)->create(); // Quantidade de pessoas
+        People::factory()
+            ->count(10) // Quantidade de pessoas
+            ->withTasks(3) // Cada pessoa terá 3 tarefas atribuídas
+            ->create();
     }
 }

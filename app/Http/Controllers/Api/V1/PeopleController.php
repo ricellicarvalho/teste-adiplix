@@ -33,7 +33,13 @@ class PeopleController extends Controller
     public function store(StorePeopleRequest $request)
     {
         $people = People::create($request->validated());
-        return response()->json($people, 201);
+        
+        //return response()->json($people, 201);
+
+        return response()->json([
+            'message' => 'Pessoa criada com sucesso.',
+            'data' => $people,
+        ], 201);
     }
 
     /**

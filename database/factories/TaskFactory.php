@@ -19,7 +19,7 @@ class TaskFactory extends Factory
         return [
             'title' => $this->faker->sentence(4), 
             'description' => $this->faker->optional()->paragraph(), // descrição opcional
-            'status' => $this->faker->boolean(30), // 30% de chance de vir true
+            'status' => $this->faker->boolean(30),
         ];
     }
 }

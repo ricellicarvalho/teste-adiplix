@@ -11,4 +11,10 @@ class Task extends Model
     use HasFactory;
 
     protected $fillable = ['title', 'description', 'status'];
+
+    // Relacionamento muitos para muitos com People
+    public function people()
+    {
+        return $this->belongsToMany(People::class, 'task_person', 'task_id', 'person_id')->withTimestamps();
+    }
 }
