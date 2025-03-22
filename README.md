@@ -1,66 +1,142 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Adiplix - API Teste Técnico
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Esta é uma API desenvolvida para o teste técnico da empresa **Adiplix**, utilizando o framework **Laravel**. O sistema realiza o gerenciamento de **Pessoas**, **Tarefas** e o relacionamento entre ambos.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 Tecnologias Utilizadas
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- PHP 8+
+- Laravel 11
+- MySQL
+- TablePlus (Ferramenta moderna e nativa para gerenciamento de banco de dados)
+- Postman / Insomnia para testes de API
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 📁 Estrutura do Projeto
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- `People` - CRUD de pessoas (nome, email, created_at e updated_at)
+- `Task` - CRUD de tarefas (título, descrição, status, created_at e updated_at)
+- `Relacionamento` - Pessoas ↔ Tarefas (muitos para muitos)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 💡 Como executar o projeto localmente
 
-## Laravel Sponsors
+```bash
+# 1. Clone o repositório
+git clone https://github.com/ricellicarvalho/teste-adiplix.git
+cd teste-adiplix
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+# 2. Instale as dependências
+composer install
 
-### Premium Partners
+# 3. Copie e configure o arquivo .env
+cp .env.example .env
+php artisan key:generate
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+# 4. Configure seu banco de dados no .env
 
-## Contributing
+# 5. Rode as migrations e os seeders
+php artisan migrate:fresh --seed
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# 6. Rode o servidor local
+php artisan serve
+```
 
-## Code of Conduct
+---
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 🔗 Importar Collection no Postman / Insomnia
 
-## Security Vulnerabilities
+> Para facilitar os testes, disponibilizei uma **Collection do Postman** com todas as requisições organizadas em:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+📁 `docs/postman/Adiplix_API_Teste_Tecnico_Postman_Collection.json`
 
-## License
+### No Postman
+1. Acesse **File > Import**
+2. Selecione o arquivo `.json` exportado
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### No Insomnia
+1. Clique em `+` > **Import**
+2. Escolha o arquivo `.json` exportado do Postman
+
+---
+
+## 📃 Endpoints da API
+
+### 👥 Pessoas
+
+| Ação                | Método | Endpoint                            |
+|----------------------|--------|-------------------------------------|
+| Criar Pessoa         | POST   | /api/V1/peoples                     |
+| Listar Pessoas       | GET    | /api/V1/peoples                     |
+| Listar Pessoa por ID| GET    | /api/V1/peoples/{id}               |
+| Editar Pessoa     | PUT    | /api/V1/peoples/{id}               |
+| Excluir Pessoa       | DELETE | /api/V1/peoples/{id}               |
+
+### 📋 Tarefas
+
+| Ação                 | Método | Endpoint                            |
+|-----------------------|--------|-------------------------------------|
+| Criar Tarefa          | POST   | /api/V1/tasks                       |
+| Listar Tarefas        | GET    | /api/V1/tasks                       |
+| Listar Tarefa por ID  | GET    | /api/V1/tasks/{id}                 |
+| Editar Tarefa      | PUT    | /api/V1/tasks/{id}                 |
+| Excluir Tarefa        | DELETE | /api/V1/tasks/{id}                 |
+
+### 👥‍💼 Relacionamento Pessoas ↔ Tarefas
+
+| Ação                                | Método | Endpoint                                        |
+|--------------------------------------|--------|-------------------------------------------------|
+| Atribuir tarefas a uma pessoa        | POST   | /api/V1/peoples/{person}/tasks                 |
+| Remover tarefas de uma pessoa        | DELETE | /api/V1/peoples/{person}/tasks                 |
+| Listar tarefas atribuídas a uma pessoa | GET    | /api/V1/peoples/{person}/tasks                 |
+| Listar pessoas atribuídas a uma tarefa| GET    | /api/V1/tasks/{task}/peoples                   |
+
+---
+
+## 📈 Exemplo de Requisição - Atribuir tarefas a uma pessoa
+
+**POST** `/api/V1/peoples/10/tasks`
+
+**Headers:**
+```json
+{
+  "Accept": "application/json",
+  "Content-Type": "application/json"
+}
+```
+
+**Body:**
+```json
+{
+  "task_ids": [12, 15, 17]
+}
+```
+
+---
+
+## 🌟 Diferenciais
+
+- Estrutura RESTful clara e padronizada
+- Uso de Eloquent ORM com validação via Form Requests
+- Tabela pivot com `created_at` e `updated_at`
+- Collection pronta para testes no Postman e Insomnia
+- Total de **14 requisições** cobrindo CRUD completo e relacionamento
+
+---
+
+## 👋 Contato
+
+Caso queira entrar em contato:
+
+**Ricelli Carvalho**  
+Email: [ricelli.martinsdecarvalho@gmail.com](mailto:ricelli.martinsdecarvalho@gmail.com)  
+WhatsApp: [Fale comigo no WhatsApp](https://wa.me/5563992822887?text=Olá%20Ricelli%2C%20vi%20seu%20perfil%20no%20GitHub%20e%20gostaria%20de%20conversar!)
+
+
+---
+
+Feito com ❤️ por Ricelli Carvalho para o desafio da **Adiplix**.
+
